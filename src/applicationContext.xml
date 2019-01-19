@@ -8,4 +8,13 @@
 
     <bean id="chinese" class="com.battlecall.spring.Chinese">
     </bean>
+
+    <!--依赖-->
+    <bean class="com.battlecall.spring.test2.ConcreateToolA" id="toolA"></bean>
+    <bean class="com.battlecall.spring.test2.ConcreateToolB" id="toolB"></bean>
+    <bean class="com.battlecall.spring.test2.Chinese" id="chinese2" autowire="default">
+        <!--构造-->
+        <!--<constructor-arg name="tool"><ref bean="toolB"></ref></constructor-arg>-->
+        <property name="tool" ref="toolA"></property>
+    </bean>
 </beans>
