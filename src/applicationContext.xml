@@ -23,4 +23,47 @@
         <!--<constructor-arg name="tool"><ref bean="toolB"></ref></constructor-arg>-->
         <property name="tool" ref="toolB"></property>
     </bean>
+
+    <!--prototype 用一次创建一次，singleton只有一个-->
+    <!---->
+    <bean class="com.battlecall.spring.test3.Dog" id="dog" scope="singleton"></bean>
+    <bean class="com.battlecall.spring.test3.Chinese" id="chinese3">
+        <property name="list">
+            <list>
+                <value>a</value>
+                <value>b</value>
+                <ref bean="dog"></ref>
+               <bean class="com.battlecall.spring.test3.Dog"></bean>
+            </list>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="cjl">
+                    <value>hy</value>
+                </entry>
+                <entry key="hy">
+                    <value>cjl</value>
+                </entry>
+                <entry key="cjl">
+                    <value>none</value>
+                </entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="key1">value1</prop>
+                <prop key="key2">value2</prop>
+            </props>
+        </property>
+        <property name="set">
+            <set>
+                <value>value1</value>
+                <value>value2</value>
+                <ref bean="dog"></ref>
+                <!--引用，此处添加无效-->
+                <ref bean="dog"></ref>
+            </set>
+        </property>
+    </bean>
 </beans>
