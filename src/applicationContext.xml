@@ -10,11 +10,17 @@
     </bean>
 
     <!--依赖-->
-    <bean class="com.battlecall.spring.test2.ConcreateToolA" id="toolA"></bean>
-    <bean class="com.battlecall.spring.test2.ConcreateToolB" id="toolB"></bean>
+    <bean class="com.battlecall.spring.test2.ConcreateToolA" id="toolA">
+        <property name="name" value="test"></property>
+    </bean>
+    <bean class="com.battlecall.spring.test2.ConcreateToolB" id="toolB">
+        <property name="name">
+            <value>B的值</value>
+        </property>
+    </bean>
     <bean class="com.battlecall.spring.test2.Chinese" id="chinese2" autowire="default">
         <!--构造-->
         <!--<constructor-arg name="tool"><ref bean="toolB"></ref></constructor-arg>-->
-        <property name="tool" ref="toolA"></property>
+        <property name="tool" ref="toolB"></property>
     </bean>
 </beans>
