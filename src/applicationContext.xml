@@ -66,4 +66,13 @@
             </set>
         </property>
     </bean>
+
+
+    <!--生命周期-->
+    <bean class="com.battlecall.spring.test5.ConcreateTool" id="concreateTool"></bean>
+    <bean class="com.battlecall.spring.test5.Chinese" id="life_chinese" init-method="myInit" destroy-method="myDestroy">
+        <property name="tool">
+            <ref bean="concreateTool"></ref>
+        </property>
+    </bean>
 </beans>
