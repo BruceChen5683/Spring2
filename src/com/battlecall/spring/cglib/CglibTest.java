@@ -15,5 +15,9 @@ public class CglibTest {
         cat.eat("haha");
 
 
+
+        Cat cat1 = (Cat)(new CgLibProxy().getCgLibProxy(Cat.class));
+        cat1.eat("--");
+
     }
 }
