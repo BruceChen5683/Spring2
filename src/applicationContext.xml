@@ -75,4 +75,10 @@
             <ref bean="concreateTool"></ref>
         </property>
     </bean>
+
+
+    <bean class="com.battlecall.spring.aop.PersonImpl" id="person">
+        <property name="name" value="hy"></property>
+        <property name="address" value="zhuchen"></property>
+    </bean>
 </beans>

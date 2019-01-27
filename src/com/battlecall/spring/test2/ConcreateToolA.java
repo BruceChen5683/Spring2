@@ -14,6 +14,6 @@ public class ConcreateToolA implements Tool{
 
     @Override
     public void realWork() {
-        System.out.println("from Tool A "+name);
+        System.out.println("from MyTool A "+name);
     }
 }

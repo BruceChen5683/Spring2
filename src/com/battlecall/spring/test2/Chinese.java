@@ -4,7 +4,7 @@ public class Chinese implements Person {
 
     private Tool tool;
 
-//    public Chinese(Tool tool) {
+//    public Chinese(MyTool tool) {
 //        this.tool = tool;
 //    }
 
