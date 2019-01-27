@@ -77,8 +77,32 @@
     </bean>
 
 
-    <bean class="com.battlecall.spring.aop.PersonImpl" id="person">
-        <property name="name" value="hy"></property>
-        <property name="address" value="zhuchen"></property>
+    <bean class="com.battlecall.spring.aop.PersonImpl" id="personTarget">
+        <property name="name" value="jade"></property>
+        <property name="address" value="朱陈村"></property>
+    </bean>
+
+    <bean class="com.battlecall.spring.aop.MyMethodBeforeAdvice" id="myMethodBeforeAdvice"></bean>
+    <bean class="com.battlecall.spring.aop.MyMethodAfterAdvice" id="myMethodAfterAdvice"></bean>
+    <bean class="com.battlecall.spring.aop.MyArroundAdvice" id="myArroundAdvice"></bean>
+
+    <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="person">
+        <property name="proxyInterfaces">
+            <value>com.battlecall.spring.aop.Person</value>
+        </property>
+
+        <!--代理谁-->
+        <property name="target">
+            <ref bean="personTarget"></ref>
+        </property>
+
+        <!--环绕通知　以及前置、后置通知顺序关系　　和list中的value顺序相关-->
+        <property name="interceptorNames">
+            <list>
+                <value>myArroundAdvice</value>
+                <value>myMethodBeforeAdvice</value>
+                <value>myMethodAfterAdvice</value>
+            </list>
+        </property>
     </bean>
 </beans>
