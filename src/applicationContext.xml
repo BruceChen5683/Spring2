@@ -77,6 +77,8 @@
     </bean>
 
 
+
+    <!--前置　后置　　环绕-->
     <bean class="com.battlecall.spring.aop.PersonImpl" id="personTarget">
         <property name="name" value="jade"></property>
         <property name="address" value="朱陈村"></property>
@@ -105,4 +107,22 @@
             </list>
         </property>
     </bean>
+
+
+
+    <bean class="com.battlecall.spring.exception.Dog" id="dogTarget"></bean>
+    <bean class="com.battlecall.spring.exception.TransationManager" id="transationManager"></bean>
+    <bean id="dog2" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <ref bean="dogTarget"></ref>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>transationManager</value>
+            </list>
+        </property>
+
+        <!--<property name="proxyTargetClass" value="true"></property>-->
+    </bean>
+
 </beans>
