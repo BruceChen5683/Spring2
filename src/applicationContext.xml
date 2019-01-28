@@ -122,7 +122,39 @@
             </list>
         </property>
 
+        <!--代理方式　是否全部使用cglib-->
         <!--<property name="proxyTargetClass" value="true"></property>-->
+    </bean>
+
+
+    <!--权限管理　　demo-->
+
+    <bean class="com.battlecall.spring.manager.OperationServiceImpl" id="serviceTarget"></bean>
+    <bean class="com.battlecall.spring.manager.AuthInterceptor" id="authInterceptor">
+        <property name="username" value="user"></property>
+    </bean>
+
+    <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="service">
+
+        <property name="proxyInterfaces">
+            <value>com.battlecall.spring.manager.OperationService</value>
+        </property>
+
+        <property name="target">
+            <ref bean="serviceTarget"></ref>
+        </property>
+
+        <property name="interceptorNames">
+            <list>
+                <value>authInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.battlecall.spring.manager.OperationImpl" id="operation">
+        <property name="service" >
+            <ref bean="service"></ref>
+        </property>
     </bean>
 
 </beans>
