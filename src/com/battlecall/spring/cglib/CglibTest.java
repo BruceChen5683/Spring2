@@ -1,6 +1,7 @@
 package com.battlecall.spring.cglib;
 
-import org.springframework.cglib.proxy.Enhancer;
+
+import net.sf.cglib.proxy.Enhancer;
 
 public class CglibTest {
     public static void main(String[] args) {
