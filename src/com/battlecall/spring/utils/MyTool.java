@@ -6,8 +6,7 @@ import org.springframework.core.io.ClassPathResource;
 public class MyTool {
 
     public static XmlBeanFactory getFactory(){
-        ClassPathResource resource = new ClassPathResource("WEB-INF/applicationContext.xml");
-
+        ClassPathResource resource = new ClassPathResource("applicationContext3.xml");
         return new XmlBeanFactory(resource);
     }
 }

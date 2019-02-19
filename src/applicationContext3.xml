@@ -3,207 +3,219 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="american" class="com.battlecall.spring.American">
-    </bean>
+    <!--<bean id="american" class="com.battlecall.spring.American">-->
+    <!--</bean>-->
 
-    <bean id="chinese" class="com.battlecall.spring.Chinese">
-    </bean>
+    <!--<bean id="chinese" class="com.battlecall.spring.Chinese">-->
+    <!--</bean>-->
 
-    <!--依赖-->
-    <bean class="com.battlecall.spring.test2.ConcreateToolA" id="toolA">
-        <property name="name" value="test"></property>
-    </bean>
-    <bean class="com.battlecall.spring.test2.ConcreateToolB" id="toolB">
+    <!--&lt;!&ndash;依赖&ndash;&gt;-->
+    <!--<bean class="com.battlecall.spring.test2.ConcreateToolA" id="toolA">-->
+        <!--<property name="name" value="test"></property>-->
+    <!--</bean>-->
+    <!--<bean class="com.battlecall.spring.test2.ConcreateToolB" id="toolB">-->
+        <!--<property name="name">-->
+            <!--<value>B的值</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean class="com.battlecall.spring.test2.Chinese" id="chinese2" autowire="default">-->
+        <!--&lt;!&ndash;构造&ndash;&gt;-->
+        <!--&lt;!&ndash;<constructor-arg name="tool"><ref bean="toolB"></ref></constructor-arg>&ndash;&gt;-->
+        <!--<property name="tool" ref="toolB"></property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash;prototype 用一次创建一次，singleton只有一个&ndash;&gt;-->
+    <!--&lt;!&ndash;&ndash;&gt;-->
+    <!--<bean class="com.battlecall.spring.test3.Dog" id="dog" scope="singleton"></bean>-->
+    <!--<bean class="com.battlecall.spring.test3.Chinese" id="chinese3">-->
+        <!--<property name="list">-->
+            <!--<list>-->
+                <!--<value>a</value>-->
+                <!--<value>b</value>-->
+                <!--<ref bean="dog"></ref>-->
+               <!--<bean class="com.battlecall.spring.test3.Dog"></bean>-->
+            <!--</list>-->
+        <!--</property>-->
+
+        <!--<property name="map">-->
+            <!--<map>-->
+                <!--<entry key="cjl">-->
+                    <!--<value>hy</value>-->
+                <!--</entry>-->
+                <!--<entry key="hy">-->
+                    <!--<value>cjl</value>-->
+                <!--</entry>-->
+                <!--<entry key="cjl">-->
+                    <!--<value>none</value>-->
+                <!--</entry>-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--<property name="properties">-->
+            <!--<props>-->
+                <!--<prop key="key1">value1</prop>-->
+                <!--<prop key="key2">value2</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+        <!--<property name="set">-->
+            <!--<set>-->
+                <!--<value>value1</value>-->
+                <!--<value>value2</value>-->
+                <!--<ref bean="dog"></ref>-->
+                <!--&lt;!&ndash;引用，此处添加无效&ndash;&gt;-->
+                <!--<ref bean="dog"></ref>-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+    <!--&lt;!&ndash;生命周期&ndash;&gt;-->
+    <!--<bean class="com.battlecall.spring.test5.ConcreateTool" id="concreateTool"></bean>-->
+    <!--<bean class="com.battlecall.spring.test5.Chinese" id="life_chinese" init-method="myInit" destroy-method="myDestroy">-->
+        <!--<property name="tool">-->
+            <!--<ref bean="concreateTool"></ref>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+
+    <!--&lt;!&ndash;前置　后置　　环绕&ndash;&gt;-->
+    <!--<bean class="com.battlecall.spring.aop.PersonImpl" id="personTarget">-->
+        <!--<property name="name" value="jade"></property>-->
+        <!--<property name="address" value="朱陈村"></property>-->
+    <!--</bean>-->
+
+    <!--<bean class="com.battlecall.spring.aop.MyMethodBeforeAdvice" id="myMethodBeforeAdvice"></bean>-->
+    <!--<bean class="com.battlecall.spring.aop.MyMethodAfterAdvice" id="myMethodAfterAdvice"></bean>-->
+    <!--<bean class="com.battlecall.spring.aop.MyArroundAdvice" id="myArroundAdvice"></bean>-->
+
+    <!--<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="person">-->
+        <!--<property name="proxyInterfaces">-->
+            <!--<value>com.battlecall.spring.aop.Person</value>-->
+        <!--</property>-->
+
+        <!--&lt;!&ndash;代理谁&ndash;&gt;-->
+        <!--<property name="target">-->
+            <!--<ref bean="personTarget"></ref>-->
+        <!--</property>-->
+
+        <!--&lt;!&ndash;环绕通知　以及前置、后置通知顺序关系　　和list中的value顺序相关&ndash;&gt;-->
+        <!--<property name="interceptorNames">-->
+            <!--<list>-->
+                <!--<value>myArroundAdvice</value>-->
+                <!--<value>myMethodBeforeAdvice</value>-->
+                <!--<value>myMethodAfterAdvice</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+
+    <!--<bean class="com.battlecall.spring.exception.Dog" id="dogTarget"></bean>-->
+    <!--<bean class="com.battlecall.spring.exception.TransationManager" id="transationManager"></bean>-->
+    <!--<bean id="dog2" class="org.springframework.aop.framework.ProxyFactoryBean">-->
+        <!--<property name="target">-->
+            <!--<ref bean="dogTarget"></ref>-->
+        <!--</property>-->
+        <!--<property name="interceptorNames">-->
+            <!--<list>-->
+                <!--<value>transationManager</value>-->
+            <!--</list>-->
+        <!--</property>-->
+
+        <!--&lt;!&ndash;代理方式　是否全部使用cglib&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="proxyTargetClass" value="true"></property>&ndash;&gt;-->
+    <!--</bean>-->
+
+
+    <!--&lt;!&ndash;权限管理　　demo&ndash;&gt;-->
+
+    <!--<bean class="com.battlecall.spring.manager.OperationServiceImpl" id="serviceTarget"></bean>-->
+    <!--<bean class="com.battlecall.spring.manager.AuthInterceptor" id="authInterceptor">-->
+        <!--<property name="username" value="user"></property>-->
+    <!--</bean>-->
+
+    <!--<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="service">-->
+
+        <!--<property name="proxyInterfaces">-->
+            <!--<value>com.battlecall.spring.manager.OperationService</value>-->
+        <!--</property>-->
+
+        <!--<property name="target">-->
+            <!--<ref bean="serviceTarget"></ref>-->
+        <!--</property>-->
+
+        <!--<property name="interceptorNames">-->
+            <!--<list>-->
+                <!--<value>authInterceptor</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean class="com.battlecall.spring.manager.OperationImpl" id="operation">-->
+        <!--<property name="service" >-->
+            <!--<ref bean="service"></ref>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+
+    <!--&lt;!&ndash;hibernate&ndash;&gt;-->
+    <!--&lt;!&ndash;dao service 无状态　　singleton&ndash;&gt;-->
+
+    <!--&lt;!&ndash;数据源&ndash;&gt;-->
+    <!--<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource" destroy-method="close">-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>-->
+
+        <!--<property name="url" value="jdbc:mysql://localhost/hibernate"></property>-->
+
+        <!--<property name="username" value="root"></property>-->
+
+        <!--<property name="password" value="123456"></property>-->
+    <!--</bean>-->
+
+    <!--<bean class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" id="sessionFactory">-->
+        <!--<property name="dataSource" ref="dataSource"></property>-->
+
+        <!--<property name="mappingResources">-->
+            <!--<list>-->
+                <!--<value>Person.hbm.xml</value>-->
+            <!--</list>-->
+        <!--</property>-->
+
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
+                <!--<prop key="hibernate.show_sql">true</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+    <!--<bean class="com.battlecall.spring.hibernate.impl.PersonDaoImpl" id="personDao">-->
+        <!--<property name="sessionFactory">-->
+            <!--<ref bean="sessionFactory"></ref>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean class="com.battlecall.spring.hibernate.impl.PersonServiceImpl" id="personService">-->
+        <!--<property name="personDao">-->
+            <!--<ref bean="personDao"></ref>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+
+    <!--aspectj-->
+
+    <bean class="com.battlecall.spring.aspectj.Person" id="personAspectj">
         <property name="name">
-            <value>B的值</value>
-        </property>
-    </bean>
-    <bean class="com.battlecall.spring.test2.Chinese" id="chinese2" autowire="default">
-        <!--构造-->
-        <!--<constructor-arg name="tool"><ref bean="toolB"></ref></constructor-arg>-->
-        <property name="tool" ref="toolB"></property>
-    </bean>
-
-    <!--prototype 用一次创建一次，singleton只有一个-->
-    <!---->
-    <bean class="com.battlecall.spring.test3.Dog" id="dog" scope="singleton"></bean>
-    <bean class="com.battlecall.spring.test3.Chinese" id="chinese3">
-        <property name="list">
-            <list>
-                <value>a</value>
-                <value>b</value>
-                <ref bean="dog"></ref>
-               <bean class="com.battlecall.spring.test3.Dog"></bean>
-            </list>
-        </property>
-
-        <property name="map">
-            <map>
-                <entry key="cjl">
-                    <value>hy</value>
-                </entry>
-                <entry key="hy">
-                    <value>cjl</value>
-                </entry>
-                <entry key="cjl">
-                    <value>none</value>
-                </entry>
-            </map>
-        </property>
-        <property name="properties">
-            <props>
-                <prop key="key1">value1</prop>
-                <prop key="key2">value2</prop>
-            </props>
-        </property>
-        <property name="set">
-            <set>
-                <value>value1</value>
-                <value>value2</value>
-                <ref bean="dog"></ref>
-                <!--引用，此处添加无效-->
-                <ref bean="dog"></ref>
-            </set>
+            <value>ccc</value>
         </property>
     </bean>
 
+    <bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator"></bean>
 
-    <!--生命周期-->
-    <bean class="com.battlecall.spring.test5.ConcreateTool" id="concreateTool"></bean>
-    <bean class="com.battlecall.spring.test5.Chinese" id="life_chinese" init-method="myInit" destroy-method="myDestroy">
-        <property name="tool">
-            <ref bean="concreateTool"></ref>
-        </property>
-    </bean>
-
-
-
-    <!--前置　后置　　环绕-->
-    <bean class="com.battlecall.spring.aop.PersonImpl" id="personTarget">
-        <property name="name" value="jade"></property>
-        <property name="address" value="朱陈村"></property>
-    </bean>
-
-    <bean class="com.battlecall.spring.aop.MyMethodBeforeAdvice" id="myMethodBeforeAdvice"></bean>
-    <bean class="com.battlecall.spring.aop.MyMethodAfterAdvice" id="myMethodAfterAdvice"></bean>
-    <bean class="com.battlecall.spring.aop.MyArroundAdvice" id="myArroundAdvice"></bean>
-
-    <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="person">
-        <property name="proxyInterfaces">
-            <value>com.battlecall.spring.aop.Person</value>
-        </property>
-
-        <!--代理谁-->
-        <property name="target">
-            <ref bean="personTarget"></ref>
-        </property>
-
-        <!--环绕通知　以及前置、后置通知顺序关系　　和list中的value顺序相关-->
-        <property name="interceptorNames">
-            <list>
-                <value>myArroundAdvice</value>
-                <value>myMethodBeforeAdvice</value>
-                <value>myMethodAfterAdvice</value>
-            </list>
-        </property>
-    </bean>
-
-
-
-    <bean class="com.battlecall.spring.exception.Dog" id="dogTarget"></bean>
-    <bean class="com.battlecall.spring.exception.TransationManager" id="transationManager"></bean>
-    <bean id="dog2" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="target">
-            <ref bean="dogTarget"></ref>
-        </property>
-        <property name="interceptorNames">
-            <list>
-                <value>transationManager</value>
-            </list>
-        </property>
-
-        <!--代理方式　是否全部使用cglib-->
-        <!--<property name="proxyTargetClass" value="true"></property>-->
-    </bean>
-
-
-    <!--权限管理　　demo-->
-
-    <bean class="com.battlecall.spring.manager.OperationServiceImpl" id="serviceTarget"></bean>
-    <bean class="com.battlecall.spring.manager.AuthInterceptor" id="authInterceptor">
-        <property name="username" value="user"></property>
-    </bean>
-
-    <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="service">
-
-        <property name="proxyInterfaces">
-            <value>com.battlecall.spring.manager.OperationService</value>
-        </property>
-
-        <property name="target">
-            <ref bean="serviceTarget"></ref>
-        </property>
-
-        <property name="interceptorNames">
-            <list>
-                <value>authInterceptor</value>
-            </list>
-        </property>
-    </bean>
-
-    <bean class="com.battlecall.spring.manager.OperationImpl" id="operation">
-        <property name="service" >
-            <ref bean="service"></ref>
-        </property>
-    </bean>
-
-
-
-    <!--hibernate-->
-    <!--dao service 无状态　　singleton-->
-
-    <!--数据源-->
-    <bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-
-        <property name="url" value="jdbc:mysql://localhost/hibernate"></property>
-
-        <property name="username" value="root"></property>
-
-        <property name="password" value="123456"></property>
-    </bean>
-
-    <bean class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" id="sessionFactory">
-        <property name="dataSource" ref="dataSource"></property>
-
-        <property name="mappingResources">
-            <list>
-                <value>Person.hbm.xml</value>
-            </list>
-        </property>
-
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.show_sql">true</prop>
-            </props>
-        </property>
-    </bean>
-
-
-    <bean class="com.battlecall.spring.hibernate.impl.PersonDaoImpl" id="personDao">
-        <property name="sessionFactory">
-            <ref bean="sessionFactory"></ref>
-        </property>
-    </bean>
-
-    <bean class="com.battlecall.spring.hibernate.impl.PersonServiceImpl" id="personService">
-        <property name="personDao">
-            <ref bean="personDao"></ref>
-        </property>
-    </bean>
-
-
+    <bean class="com.battlecall.spring.aspectj.MyAspectJ" id="myAspectJ"></bean>
 
 
 </beans>
