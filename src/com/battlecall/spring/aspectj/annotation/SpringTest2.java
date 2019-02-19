@@ -1,4 +1,4 @@
-package com.battlecall.spring.aspectj;
+package com.battlecall.spring.aspectj.annotation;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;

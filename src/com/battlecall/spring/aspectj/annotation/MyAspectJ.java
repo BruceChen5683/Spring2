@@ -1,4 +1,4 @@
-package com.battlecall.spring.aspectj;
+package com.battlecall.spring.aspectj.annotation;
 
 
 import org.aspectj.lang.JoinPoint;
@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.*;
 @Aspect
 public class MyAspectJ {
 
-    @Pointcut("execution(public * execute(..)) && target(com.battlecall.spring.aspectj.Person)")
+    @Pointcut("execution(public * execute(..)) && target(com.battlecall.spring.aspectj.annotation.Person)")
     public void pointcut(){
 
     }

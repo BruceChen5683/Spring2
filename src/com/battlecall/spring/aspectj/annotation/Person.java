@@ -1,4 +1,4 @@
-package com.battlecall.spring.aspectj;
+package com.battlecall.spring.aspectj.annotation;
 
 public class Person {
     private String name;
