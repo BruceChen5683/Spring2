@@ -36,4 +36,9 @@ public class PersonDaoImpl extends HibernateDaoSupport implements PersonDao {
     public void update(Person person) {
         this.getHibernateTemplate().saveOrUpdate(person);
     }
+
+    @Override
+    public List<Person> listAll() {
+        return this.getHibernateTemplate().loadAll(Person.class);
+    }
 }

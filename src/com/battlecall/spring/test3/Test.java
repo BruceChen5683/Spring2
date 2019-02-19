@@ -5,7 +5,7 @@ import org.springframework.core.io.ClassPathResource;
 
 public class Test {
     public static void main(String[] args) {
-        ClassPathResource resource = new ClassPathResource("applicationContext.xml");
+        ClassPathResource resource = new ClassPathResource("WEB-INF/applicationContext.xml");
 
         XmlBeanFactory xmlBeanFactory = new XmlBeanFactory(resource);
 

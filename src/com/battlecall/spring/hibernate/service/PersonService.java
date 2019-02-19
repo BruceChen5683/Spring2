@@ -13,5 +13,7 @@ public interface PersonService {
 
     public List<Person> getPersonsByName(String name);
 
+    public List<Person> listAll();
+
     public void update(Person person);
 }

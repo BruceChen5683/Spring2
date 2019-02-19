@@ -15,4 +15,6 @@ public interface PersonDao {
     public List<Person> getPersonsByName(String name);
 
     public void update(Person person);
+
+    public List<Person> listAll();
 }

@@ -37,4 +37,9 @@ public class PersonServiceImpl implements PersonService{
     public void update(Person person) {
         personDao.update(person);
     }
+
+    @Override
+    public List<Person> listAll() {
+        return personDao.listAll();
+    }
 }

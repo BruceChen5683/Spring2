@@ -55,9 +55,18 @@
         <property name="transactionAttributes">
             <!--查询可添加readOnly  提高数据库效率-->
             <props>
-                <prop key="get*">PROPAGATION_REQUIED,readOnly</prop>
-                <prop key="*">PROPAGATION_REQUIED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
             </props>
         </property>
+    </bean>
+
+
+    <bean class="com.battlecall.spring.action.SavePerson" id="savePerson" scope="prototype">
+        <property name="service" ref="personService"></property>
+    </bean>
+
+    <bean class="com.battlecall.spring.action.ListPerson" id="listPerson" scope="prototype">
+        <property name="service" ref="personService"></property>
     </bean>
 </beans>
