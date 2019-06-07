@@ -234,4 +234,30 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 
     <!--schema or annotation-->
 
+    <!--timer-->
+    <bean class="com.battlecall.spring.timer.MyTimerTask" id="myTimerTask"></bean>
+
+    <bean class="org.springframework.scheduling.timer.ScheduledTimerTask" id="scheduledTimerTask">
+        <property name="delay">
+            <value>1000</value>
+        </property>
+
+        <property name="period">
+            <value>1000</value>
+        </property>
+
+        <property name="timerTask">
+            <ref bean="myTimerTask"></ref>
+        </property>
+
+    </bean>
+
+    <bean class="org.springframework.scheduling.timer.TimerFactoryBean" id="timerFactoryBean">
+        <property name="scheduledTimerTasks">
+            <list>
+                <ref bean="scheduledTimerTask"></ref>
+            </list>
+        </property>
+    </bean>
+
 </beans>

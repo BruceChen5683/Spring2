@@ -41,7 +41,7 @@
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
-    <bean class="com.battlecall.spring.hibernate.impl.PersonDaoImpl" id="personDao">
+    <bean class="com.battlecall.spring.hibernate.impl.PersonDaoImpl" id="personDao" >
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
